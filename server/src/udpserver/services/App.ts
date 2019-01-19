@@ -19,7 +19,7 @@ class App{
     }
 
     async handleMessage(msg: Buffer){
-        var message = await this.decoder.decode(msg.toString("utf-8"));
+        var message = this.decoder.decode(msg.toString("utf-8"));
         await this.publisher.send(message);        
         return "OK";
     }
