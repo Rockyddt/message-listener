@@ -4,7 +4,7 @@ import INotificationService from '../services/INotificationService';
 import NotificationService from '../services/NotificationService';
 import ISubscriber from '../../common/subscribers/ISubscriber';
 import AzureEventHubs from '../../common/subscribers/AzureEventHubSubscriber';
-import App from '../services/App';
+import App from '../services/WebAppService';
 import Decoder from '../../common/decoders/Decoder';
 import IDecoder from '../../common/decoders/IDecoder';
 import TYPES from '../../common/constant/Types';

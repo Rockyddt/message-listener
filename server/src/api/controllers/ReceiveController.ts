@@ -5,21 +5,18 @@ import {
 
 import { Request, Response } from 'express';
 import * as log from '../../common/log';
-import INotificationService from '../services/INotificationService';
-
 
 import IDecoder from '../../common/decoders/IDecoder';
 import TYPES from '../../common/constant/Types';
+import INotifier from '../../common/subscribers/INotifier';
 
 
 @controller('/receive')
 class ReceiveController implements interfaces.Controller  {
     constructor(
-        @inject(TYPES.INotificationService) private notificationService: INotificationService,
+        @inject(TYPES.INotificationService) private notificationService: INotifier,
         @inject(TYPES.IDecoder) private decoder: IDecoder
-        ){
-
-    }
+        ){}
 
     @httpPost('/')
     async receive(req: Request, res: Response) {

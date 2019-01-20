@@ -10,15 +10,16 @@ import '../controllers/Controllers';
 import TYPES from '../../common/constant/Types';
 
 @injectable()
-class App {
+class WebAppService {
     private app: Application;
     private notificationService: INotificationService;
-
+    private subscriberService: ISubscriber;
     constructor(
         @inject(TYPES.INotificationService) notificationService: INotificationService,
         @inject(TYPES.ISubscriber) subscriberService: ISubscriber ) {
 
         this.notificationService = notificationService;
+        this.subscriberService = subscriberService;
 
         const app = express();
         app.set("port", process.env.PORT || 5000);
@@ -27,20 +28,23 @@ class App {
         app.use(bodyParser.urlencoded({ extended: true }));
         app.use(this.allowAnyRequest);        
 
-        subscriberService.registerNotifier(notificationService);        
-        subscriberService.subscribe();
-        this.app = app;
+        this.subscriberService.registerNotifier(notificationService);        
         
+        this.app = app;        
     }
-
-
-    allowAnyRequest(req,res,next){
+    
+    /* istanbul ignore next */
+    private allowAnyRequest(req,res,next){
         res.header("Access-Control-Allow-Origin", "*/*");
         res.header("Access-Control-Allow-Headers", "X-Requested-With");
         res.header("Access-Control-Allow-Headers", "Content-Type");
         res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");    
         next();
     }
+
+    startSubscribe(){
+        this.subscriberService.subscribe();
+    }   
 
     getApp(){
         return this.app;
@@ -56,4 +60,4 @@ class App {
 }
 
 
-export default App;
+export default WebAppService;
