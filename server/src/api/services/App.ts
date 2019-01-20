@@ -5,9 +5,9 @@ import { Application } from 'express-serve-static-core';
 
 import INotificationService from './INotificationService';
 import ISubscriber from '../../common/subscribers/ISubscriber';
-import TYPES from '../constant/Types';
 
 import '../controllers/Controllers';
+import TYPES from '../../common/constant/Types';
 
 @injectable()
 class App {

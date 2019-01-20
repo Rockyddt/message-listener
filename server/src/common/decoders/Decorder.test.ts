@@ -1,4 +1,4 @@
-import Decoder from '../../decoders/Decoder';
+import Decoder from './Decoder';
 
 describe('Decoder', ()=>{
     let decoder; 
@@ -11,8 +11,7 @@ describe('Decoder', ()=>{
         test('should decode correctly', ()=>{
             expect(decoder.decode("test")).toEqual({"body": "test"});
         });
-    });
-    
+    });  
 
     
 });

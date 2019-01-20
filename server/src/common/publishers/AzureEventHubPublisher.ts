@@ -1,3 +1,4 @@
+import 'reflect-metadata';
 import { EventHubClient } from '@azure/event-hubs';
 import * as log from '../log';
 import IPublisher from './IPublisher';
@@ -5,7 +6,7 @@ import { injectable } from 'inversify';
 
 @injectable()
 
-class AzureEventHubs implements IPublisher {
+class AzureEventHubPublisher implements IPublisher {
     private client;
 
     constructor(){                              
@@ -16,11 +17,10 @@ class AzureEventHubs implements IPublisher {
 
     async send(message: any) {        
         await this.client.send(message);        
-        log.logInfo("message sent successfully.");
-        log.logInfo(message);
+        log.logInfo("message sent successfully.");        
     }
 
 
 }
 
-export default AzureEventHubs;
+export default AzureEventHubPublisher;

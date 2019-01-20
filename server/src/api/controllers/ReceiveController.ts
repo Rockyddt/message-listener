@@ -7,8 +7,9 @@ import { Request, Response } from 'express';
 import * as log from '../../common/log';
 import INotificationService from '../services/INotificationService';
 
-import TYPES from '../constant/Types';
+
 import IDecoder from '../../common/decoders/IDecoder';
+import TYPES from '../../common/constant/Types';
 
 
 @controller('/receive')

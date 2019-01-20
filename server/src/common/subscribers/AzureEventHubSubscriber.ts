@@ -5,7 +5,7 @@ import * as log from '../log';
 import { injectable } from 'inversify';
 
 @injectable()
-class AzureEventHubs implements ISubscriber {
+class AzureEventHubSubscriber implements ISubscriber {
     private eventHubProcessor;  
     private receivedMessageCount: number;
     private notifiers: any[];
@@ -26,9 +26,7 @@ class AzureEventHubs implements ISubscriber {
     }
 
     async subscribe(){
-        await this.eventHubProcessor.start(async (context, data)=>{
-            await this.onMessage(context, data);
-        }, this.onError);
+        await this.eventHubProcessor.start(this.onMessage, this.onError);
     }
 
     async registerNotifier(notifier){                
@@ -56,4 +54,4 @@ class AzureEventHubs implements ISubscriber {
     };
 }
 
-export default AzureEventHubs;
+export default AzureEventHubSubscriber;

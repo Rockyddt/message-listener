@@ -3,8 +3,8 @@
 import { inject, injectable } from 'inversify';
 
 import IPublisher from '../../common/publishers/IPublisher';
-import TYPES from '../../udpserver/constant/Types';
 import IDecoder from '../../common/decoders/IDecoder';
+import TYPES from '../../common/constant/Types';
 
 @injectable()
 class App{

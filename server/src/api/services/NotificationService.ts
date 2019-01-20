@@ -3,9 +3,10 @@ import * as log from '../../common/log';
 import http from 'http';
 import INotificationService from './INotificationService';
 import { injectable } from 'inversify';
+import INotifier from '../../common/subscribers/INotifier';
 
 @injectable()
-class NotificationService implements INotificationService {    
+class NotificationService implements INotificationService, INotifier {    
     private notificationServer;
 
     listen(server: http.Server){
