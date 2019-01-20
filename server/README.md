@@ -19,16 +19,11 @@ Runs the two servers in the development mode. <br>
     Send ASCII text to 127.0.0.1:20500 <br>
     Example:
     > "test"
-    <br>
-    <br>
+    
 * Express Api Server is on port 5000 <br>
     Post JSON data to http://localhost:5000/receive <br>
     Example:
     > {"body": "test"}
     
-    
- 
-
-
 ### `npm test`
 Run jest --coverage command to test all the test files. 
