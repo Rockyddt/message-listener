@@ -7,7 +7,7 @@ jest.mock('@azure/event-hubs')
 describe('AzureEventHubPublisher', ()=>{
     let publisher : IPublisher;  
     let mockCallback = jest.fn();
-    EventHubClient.createFromConnectionString = jest.fn().mockImplementationOnce(() => {
+    EventHubClient.createFromConnectionString = jest.fn().mockImplementation(() => {
         return {
             send: mockCallback
         };

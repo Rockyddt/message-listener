@@ -7,7 +7,7 @@ import IDecoder from '../../common/decoders/IDecoder';
 import TYPES from '../../common/constant/Types';
 
 @injectable()
-class App{
+class UdpAppService{
     private decoder: IDecoder;
     private publisher:IPublisher;    
     
@@ -25,4 +25,4 @@ class App{
     }
 }
 
-export default App;
+export default UdpAppService;

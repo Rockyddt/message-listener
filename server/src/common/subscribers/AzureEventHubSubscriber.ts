@@ -29,7 +29,7 @@ class AzureEventHubSubscriber implements ISubscriber {
         await this.eventHubProcessor.start(this.onMessage, this.onError);
     }
 
-    async registerNotifier(notifier){                
+    registerNotifier = async (notifier)=>{                
         this.notifiers.push(notifier);
     }
 
@@ -37,7 +37,7 @@ class AzureEventHubSubscriber implements ISubscriber {
         log.logInfo(`Received Error: ${err}`);
     }
 
-    async onMessage (context, data) {
+    onMessage = async(context, data) => {
         log.logInfo(`Receive message from '${context.partitionId}': '${data.body}'`);  
         this.notifiers.forEach(n=>{
             n.notify(data.body);

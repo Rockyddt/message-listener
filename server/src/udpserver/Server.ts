@@ -3,14 +3,14 @@ import * as log from '../common/log';
 
 import { AddressInfo } from 'net';
 import { AppService} from "./ioc/Ioc";
-import App from './services/App';
+import UdpAppService from './services/UdpAppService';
 
 
 class Server {
 	private server: dgram.Socket;
-    private appService: App;
+    private appService: UdpAppService;
     
-	constructor(appService: App){				
+	constructor(appService: UdpAppService){				
 		this.server = dgram.createSocket('udp4');
 		this.appService = appService;
 		this.init();		
