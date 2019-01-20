@@ -1,5 +1,5 @@
 ## Get started 
-The server has two servers, UDP server and HTTP Server.
+The server side has two servers, UDP server and HTTP Server.
 
 Before you can run the scripts, please do the following:
 
@@ -14,9 +14,21 @@ Before you can run the scripts, please do the following:
 In the project directory, you can run:
 
 ### `npm start`
-Runs the two servers in the development mode http://localhost.
-UDP Server is on port 20500
-Express Api Server is on port 5000
+Runs the two servers in the development mode. <br>
+* UDP Server is on port 20500 <br>
+    Send ASCII text to 127.0.0.1:20500 <br>
+    Example:
+    > "test"
+    <br>
+    <br>
+* Express Api Server is on port 5000 <br>
+    Post JSON data to http://localhost:5000/receive <br>
+    Example:
+    > {"body": "test"}
+    
+    
+ 
+
 
 ### `npm test`
 Run jest --coverage command to test all the test files. 
