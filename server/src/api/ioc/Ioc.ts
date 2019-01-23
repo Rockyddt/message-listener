@@ -16,7 +16,6 @@ container.bind<ISubscriber>(TYPES.ISubscriber).to(AzureEventHubs).inSingletonSco
 container.bind<IDecoder>(TYPES.IDecoder).to(Decoder).inSingletonScope();
 container.bind<App>(TYPES.WebAppService).to(App).inSingletonScope();
 
-let AppService = container.get<App>(TYPES.WebAppService);
+const AppService = container.get<App>(TYPES.WebAppService);
 
 export {container, AppService};
-

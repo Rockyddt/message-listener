@@ -20,6 +20,7 @@ describe("ReceiveController", () => {
         public notify = notifierMock;
     }
 
+// tslint:disable-next-line: max-classes-per-file
     class DecoderMock {
         public decode = decodeMock;
     }
@@ -38,7 +39,9 @@ describe("ReceiveController", () => {
     describe("receive", () => {
         test("receive new message should decode and notify", async () => {
             const request = {body: {body: "test"}} as Request;
-            const response = {send: () => {}} as Response;
+            const response = {send: () => {
+                return;
+            } } as Response;
 
             await controller.receive( request, response);
 
