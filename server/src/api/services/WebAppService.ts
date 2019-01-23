@@ -1,13 +1,13 @@
-import express from 'express';
-import bodyParser from 'body-parser';
-import { inject, injectable } from 'inversify';
-import { Application } from 'express-serve-static-core';
+import bodyParser from "body-parser";
+import express from "express";
+import { Application } from "express-serve-static-core";
+import { inject, injectable } from "inversify";
 
-import INotificationService from './INotificationService';
-import ISubscriber from '../../common/subscribers/ISubscriber';
+import ISubscriber from "../../common/subscribers/ISubscriber";
+import INotificationService from "./INotificationService";
 
-import '../controllers/Controllers';
-import TYPES from '../../common/constant/Types';
+import TYPES from "../../common/constant/Types";
+import "../controllers/Controllers";
 
 @injectable()
 class WebAppService {
@@ -26,38 +26,36 @@ class WebAppService {
 
         app.use(bodyParser.json());
         app.use(bodyParser.urlencoded({ extended: true }));
-        app.use(this.allowAnyRequest);        
+        app.use(this.allowAnyRequest);
 
-        this.subscriberService.registerNotifier(notificationService);        
-        
-        this.app = app;        
-    }
-    
-    /* istanbul ignore next */
-    private allowAnyRequest(req,res,next){
-        res.header("Access-Control-Allow-Origin", "*/*");
-        res.header("Access-Control-Allow-Headers", "X-Requested-With");
-        res.header("Access-Control-Allow-Headers", "Content-Type");
-        res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");    
-        next();
+        this.subscriberService.registerNotifier(notificationService);
+        this.app = app;
     }
 
-    startSubscribe(){
+    public startSubscribe() {
         this.subscriberService.subscribe();
-    }   
+    }
 
-    getApp(){
+    public getApp() {
         return this.app;
     }
 
-    getNotificationService(){
+    public getNotificationService() {
         return this.notificationService;
     }
 
-    get(name: string) {
+    public get(name: string) {
         return this.app.get(name);
     }
-}
 
+    /* istanbul ignore next */
+    private allowAnyRequest(req , res, next) {
+        res.header("Access-Control-Allow-Origin", "*/*");
+        res.header("Access-Control-Allow-Headers", "X-Requested-With");
+        res.header("Access-Control-Allow-Headers", "Content-Type");
+        res.header("Access-Control-Allow-Methods", "PUT, GET, POST, DELETE, OPTIONS");
+        next();
+    }
+}
 
 export default WebAppService;

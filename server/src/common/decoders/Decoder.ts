@@ -1,15 +1,14 @@
-import 'reflect-metadata';
-import IDecoder from './IDecoder';
-import { injectable } from 'inversify';
-
+import { injectable } from "inversify";
+import "reflect-metadata";
+import IDecoder from "./IDecoder";
 
 @injectable()
 class Decoder implements IDecoder {
-    
-    decode(msg: string): any{     
-        var decodedMsg = {
-            body: msg
-        }
+
+    public decode(msg: string): any {
+        const decodedMsg = {
+            body: msg,
+        };
         return decodedMsg;
     }
 }

@@ -1,30 +1,30 @@
-import io from 'socket.io';
-import * as log from '../../common/log';
-import http from 'http';
-import INotificationService from './INotificationService';
-import { injectable } from 'inversify';
-import INotifier from '../../common/subscribers/INotifier';
+import http from "http";
+import { injectable } from "inversify";
+import io from "socket.io";
+import * as log from "../../common/log";
+import INotifier from "../../common/subscribers/INotifier";
+import INotificationService from "./INotificationService";
 
 @injectable()
-class NotificationService implements INotificationService, INotifier {    
+class NotificationService implements INotificationService, INotifier {
     private notificationServer;
 
-    listen(server: http.Server){
-        let ops: io.ServerOptions = {
-            origins:'*:*'
-        }   
-        this.notificationServer = io.listen(server,ops); 
-        this.notificationServer.on('connection', this.onConnected);                  
+    public listen(server: http.Server) {
+        const ops: io.ServerOptions = {
+            origins: "*:*",
+        };
+        this.notificationServer = io.listen(server, ops);
+        this.notificationServer.on("connection", this.onConnected);
     }
 
-    onConnected(socket){
-        log.logInfo('a user connected');
-        socket.on('disconnect', function(){
-            log.logInfo('user disconnected');
+    public onConnected(socket) {
+        log.logInfo("a user connected");
+        socket.on("disconnect", () => {
+            log.logInfo("user disconnected");
         });
     }
 
-    notify(data: any) {
+    public notify(data: any) {
         this.notificationServer.emit("message", data);
     }
 

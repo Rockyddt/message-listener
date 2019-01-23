@@ -1,11 +1,11 @@
-const TYPES = {    
-    INotificationService: Symbol.for('INotificationService'),
-    ISubscriber: Symbol.for('ISubscriber'),
-    IDecoder: Symbol.for('IDecoder'),    
-    IPublisher: Symbol.for('IPublisher'),
-    WebAppService: Symbol.for('WebAppService'),    
-    UdpAppService: Symbol.for('AppService'),
-    EventHubClient: Symbol.for('EventHubClient'),
+const TYPES = {
+    EventHubClient: Symbol.for("EventHubClient"),
+    IDecoder: Symbol.for("IDecoder"),
+    INotificationService: Symbol.for("INotificationService"),
+    IPublisher: Symbol.for("IPublisher"),
+    ISubscriber: Symbol.for("ISubscriber"),
+    UdpAppService: Symbol.for("AppService"),
+    WebAppService: Symbol.for("WebAppService"),
 };
 
 export default TYPES;

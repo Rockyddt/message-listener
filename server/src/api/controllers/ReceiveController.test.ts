@@ -1,51 +1,51 @@
 
-import 'reflect-metadata';
-import TYPES from '../../common/constant/Types';
-import { Container, decorate, injectable } from 'inversify';
-import ReceiveController from './ReceiveController';
-import { Request, Response } from 'express';
+import { Request, Response } from "express";
+import { Container, decorate, injectable } from "inversify";
+import "reflect-metadata";
+import TYPES from "../../common/constant/Types";
+import ReceiveController from "./ReceiveController";
 
-describe('ReceiveController', ()=>{
-    let controller : ReceiveController;  
+describe("ReceiveController", () => {
+    let controller: ReceiveController;
     let container: Container | null;
 
     const notifierMock = jest.fn();
-    const decodeMock = jest.fn().mockImplementation(()=>{
+    const decodeMock = jest.fn().mockImplementation(() => {
         return {
-            body: "test"
-        }
+            body: "test",
+        };
     });
-    
-    class NotifierMock{
-        notify = notifierMock        
+
+    class NotifierMock {
+        public notify = notifierMock;
     }
-    class DecoderMock{
-        decode = decodeMock        
+
+    class DecoderMock {
+        public decode = decodeMock;
     }
-    
+
     decorate(injectable(), NotifierMock);
     decorate(injectable(), DecoderMock);
 
-    beforeEach(()=>{       
-        container = new Container();        
+    beforeEach(() => {
+        container = new Container();
         container.bind(TYPES.INotificationService).to(NotifierMock);
         container.bind(TYPES.IDecoder).to(DecoderMock);
 
-        controller = new ReceiveController(container.get(TYPES.INotificationService), container.get(TYPES.IDecoder));    
-    });   
+        controller = new ReceiveController(container.get(TYPES.INotificationService), container.get(TYPES.IDecoder));
+    });
 
-    describe('receive', ()=>{        
-        test('receive new message should decode and notify', async ()=>{
-            let request = {body:{body:"test"}} as Request;
-            let response = {send: ()=>{}} as Response;
+    describe("receive", () => {
+        test("receive new message should decode and notify", async () => {
+            const request = {body: {body: "test"}} as Request;
+            const response = {send: () => {}} as Response;
 
-            await controller.receive( request, response); 
+            await controller.receive( request, response);
 
             expect(notifierMock.mock.calls.length).toBe(1);
             expect(decodeMock.mock.calls.length).toBe(1);
-        });        
-    });   
-
+        });
+    });
 
     afterEach(() => {
         container = null;

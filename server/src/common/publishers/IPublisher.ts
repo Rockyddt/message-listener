@@ -1,5 +1,5 @@
 interface IPublisher {
-    send(message: any)
+    send(message: any): void;
 }
 
 export default IPublisher;

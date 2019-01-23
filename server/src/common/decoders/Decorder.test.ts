@@ -1,17 +1,16 @@
-import Decoder from './Decoder';
+import Decoder from "./Decoder";
 
-describe('Decoder', ()=>{
-    let decoder; 
+describe("Decoder", () => {
+    let decoder;
 
-    beforeEach(()=>{
+    beforeEach(() => {
         decoder = new Decoder();
-    });   
+    });
 
-    describe('decode', ()=>{
-        test('should decode correctly', ()=>{
-            expect(decoder.decode("test")).toEqual({"body": "test"});
+    describe("decode", () => {
+        test("should decode correctly", () => {
+            expect(decoder.decode("test")).toEqual({body: "test"});
         });
-    });  
+    });
 
-    
 });
