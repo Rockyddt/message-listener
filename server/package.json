@@ -6,7 +6,15 @@
     "start": "concurrently -c \"magenta,cyan\" \"npm:udp-server\" \"npm:http-server\"",
     "udp-server": "node -r dotenv/config ./dist/udpserver/server.js",
     "http-server": "node -r dotenv/config ./dist/api/server.js",
-    "test": "jest --coverage"
+    "build": "tsc",
+    "test": "jest --coverage",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "author": "Wenxin Shi",
   "license": "ISC",
@@ -32,7 +40,10 @@
     "@types/mocha": "^5.2.5",
     "@types/node": "^10.12.17",
     "jest": "^23.6.0",
+    "prettier": "^1.16.1",
     "ts-jest": "^23.10.5",
+    "tslint": "^5.12.1",
+    "tslint-config-prettier": "^1.17.0",
     "typescript": "^3.2.4"
   },
   "jest": {

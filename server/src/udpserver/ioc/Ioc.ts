@@ -10,9 +10,12 @@ import UdpAppService from "../services/UdpAppService";
 const container = new Container();
 
 container.bind<IDecoder>(TYPES.IDecoder).to(Decoder);
-container.bind<IPublisher>(TYPES.IPublisher).to(AzureEventHubs).inSingletonScope();
+container
+  .bind<IPublisher>(TYPES.IPublisher)
+  .to(AzureEventHubs)
+  .inSingletonScope();
 container.bind<UdpAppService>(TYPES.UdpAppService).to(UdpAppService);
 
 const AppService = container.get<UdpAppService>(TYPES.UdpAppService);
 
-export {container, AppService};
+export { container, AppService };

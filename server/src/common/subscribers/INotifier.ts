@@ -1,5 +1,4 @@
-
 interface INotifier {
-    notify(data: any): void;
+  notify(data: any): void;
 }
 export default INotifier;

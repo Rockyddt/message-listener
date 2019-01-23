@@ -1,5 +1,5 @@
 interface IDecoder {
-    decode(message: any): any;
+  decode(message: any): any;
 }
 
 export default IDecoder;
