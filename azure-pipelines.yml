@@ -26,3 +26,7 @@ steps:
   workingDirectory: './server'
   displayName: 'Compile to javascript'
 
+- script: |
+    docker-compose -f "server\docker-compose.yml" up -d --build
+    docker-compose -f "server\docker-compose.yml" down
+  displayName: 'Build docker image packages'
