@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  web:
+    image: message-listener
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:
+      - 5000:5000          
+    command: npm run-script http-server
+  listener:
+    image: message-listener
+    build: .
+    environment:
+      NODE_ENV: production
+    ports:           
+      - 20500:20500          
+    command: npm run-script udp-server
+  

@@ -1,6 +1,6 @@
+import "reflect-metadata";
 import * as http from "http";
 import { InversifyExpressServer } from "inversify-express-utils";
-import "reflect-metadata";
 import * as log from "../common/log";
 import { AppService, container } from "./ioc/Ioc";
 import WebAppService from "./services/WebAppService";
