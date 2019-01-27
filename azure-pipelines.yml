@@ -15,11 +15,14 @@ steps:
     versionSpec: '11.8'
 
 - script: npm install
+  workingDirectory: './server'
   displayName: 'Install packages'
 
 - script: npm test
+  workingDirectory: './server'
   displayName: 'Run test'
 
 - script: npm run-script compile
+  workingDirectory: './server'
   displayName: 'Compile to javascript'
 
