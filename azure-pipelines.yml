@@ -12,7 +12,7 @@ pool:
 steps:
 - task: NodeTool@0 
   inputs:
-    versionSpec: 'latest'
+    versionSpec: '11.8'
 
 - script: npm install
   displayName: 'Install packages'
