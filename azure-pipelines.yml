@@ -1,0 +1,21 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'Ubuntu-16.04'
+
+steps:
+- script: npm install
+  displayName: 'Install packages'
+
+- script: npm test
+  displayName: 'Run test'
+
+- script: npm run-script compile
+  displayName: 'Compile to javascript'
+
