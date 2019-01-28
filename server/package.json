@@ -25,9 +25,7 @@
   "license": "ISC",
   "dependencies": {
     "@azure/event-hubs": "^1.0.8",
-    "@azure/event-processor-host": "^1.0.6",
-    "@types/azure": "^0.9.20",
-    "@types/socket.io": "^2.1.2",
+    "@azure/event-processor-host": "^1.0.6",    
     "azure": "^2.3.1-preview",
     "concurrently": "^4.1.0",
     "dotenv": "^6.2.0",
@@ -38,6 +36,8 @@
     "socket.io": "^2.2.0"    
   },
   "devDependencies": {    
+    "@types/azure": "^0.9.20",
+    "@types/socket.io": "^2.1.2",
     "@types/body-parser": "^1.17.0",
     "@types/chai": "^4.1.7",
     "@types/express": "^4.16.0",
