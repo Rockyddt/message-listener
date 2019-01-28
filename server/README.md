@@ -1,3 +1,5 @@
+[![Build Status](https://boxingday.visualstudio.com/Test%20project/_apis/build/status/Rockyddt.message-listener?branchName=master)](https://boxingday.visualstudio.com/Test%20project/_build/latest?definitionId=12?branchName=master)
+
 ## Get started 
 The server side has two servers, UDP server and HTTP Server.
 
