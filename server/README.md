@@ -31,8 +31,8 @@ Runs the two servers in the development mode. <br>
 ### `npm test`
 Run jest --coverage command to test all the test files. 
 
-### Build docker image
+### `Build docker image`
 ![](./docs/docker-build.gif)
 
-### Start docker-compose
+### `Start docker-compose`
 ![](./docs/docker-compose.gif)
