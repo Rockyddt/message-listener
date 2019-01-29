@@ -1,7 +1,8 @@
 [![Build Status](https://boxingday.visualstudio.com/Test%20project/_apis/build/status/Rockyddt.message-listener?branchName=master)](https://boxingday.visualstudio.com/Test%20project/_build/latest?definitionId=12?branchName=master)
 
 ## Get started 
-The server side has two servers, UDP server and HTTP Server.
+The server project has two servers, UDP server and HTTP Server.
+UDP server will listen udp messages and forward it http server using [Azure Eventhub](https://docs.microsoft.com/en-us/azure/event-hubs/) 
 
 Before you can run the scripts, please do the following:
 
@@ -29,3 +30,9 @@ Runs the two servers in the development mode. <br>
     
 ### `npm test`
 Run jest --coverage command to test all the test files. 
+
+### Build docker image
+![](./docs/docker-build.gif)
+
+### Start docker-compose
+![](./docs/docker-compose.gif)
